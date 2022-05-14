@@ -120,7 +120,7 @@ public class DataType {
         if (this == o1) return true;
         if (o1 == null || getClass() != o1.getClass()) return false;
         DataType dataType = (DataType) o1;
-        return /*Objects.equals(name, dataType.name) && */ //todo: check this for internal types
+        return Objects.equals(name, dataType.name) && //todo: check this for internal types
                 Objects.equals(o, dataType.o) &&
                 Objects.equals(type, dataType.type) &&
                 Objects.equals(typeClass, dataType.typeClass);
