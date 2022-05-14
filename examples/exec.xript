@@ -1,0 +1,6 @@
+method main void
+  1
+    "test "
+    java.lang.System.out.println(string)
+  java.lang.System.out.println(int)
+end

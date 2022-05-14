@@ -1,0 +1,7 @@
+import java.lang.System Sys
+
+method main void
+  Sys.in>
+  ???
+  drop
+end

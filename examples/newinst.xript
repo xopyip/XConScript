@@ -1,0 +1,11 @@
+import java.lang.System Sys
+import java.util.Scanner Scan
+import java.io.InputStream IS
+
+method main void
+  var s Scan
+  Sys.in> Scan(IS) >s
+
+  s.nextLine()
+  dup log log
+end

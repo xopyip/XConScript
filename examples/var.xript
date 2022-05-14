@@ -1,0 +1,16 @@
+method main void
+  var a int
+  var b int
+  var c string
+  0 >a
+  1 >b
+  while a> 10000 < do
+    a> b> +
+    b> >a
+    dup >b
+    log "\n" log
+  end
+
+  "Hello world" >c
+  c> log
+end

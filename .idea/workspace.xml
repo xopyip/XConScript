@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="e6940e8f-030f-41ab-b200-08e666cb01da" name="Changes" comment="Project moved to open source repo">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/char.xript" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/double.xript" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/double_comparison.xript" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/dump.xript" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/exec.xript" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/if.xript" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/methods.xript" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/newinst.xript" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/var.xript" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/while.xript" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pl/baluch/ClassDumper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pl/baluch/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pl/baluch/xconscript/KeywordType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pl/baluch/xconscript/ScriptClassLoader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pl/baluch/xconscript/ScriptCompiler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pl/baluch/xconscript/ScriptLexer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pl/baluch/xconscript/ScriptParser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pl/baluch/xconscript/Stack.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pl/baluch/xconscript/TokenException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pl/baluch/xconscript/Utils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pl/baluch/xconscript/data/Block.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pl/baluch/xconscript/data/BlockType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pl/baluch/xconscript/data/ContextBlockType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pl/baluch/xconscript/data/DataType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pl/baluch/xconscript/data/LocalVariable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pl/baluch/xconscript/data/MethodArgument.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pl/baluch/xconscript/data/OperationSignature.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pl/baluch/xconscript/data/ParseContext.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pl/baluch/xconscript/data/Script.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pl/baluch/xconscript/data/StdLib.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pl/baluch/xconscript/data/TokenLocation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pl/baluch/xconscript/operations/Operation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pl/baluch/xconscript/tokens/PushToken.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pl/baluch/xconscript/tokens/Token.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pl/baluch/xconscript/tokens/WordToken.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="299NKzL0D4uxAvivNCv7gaYsIOo" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/xopyi/IdeaProjects/XConScript"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\xopyi\IdeaProjects\XConScript" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\xopyi\IdeaProjects\XConScript\examples" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="pl.baluch.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="pl.baluch.Main" />
+      <module name="XConScript.main" />
+      <option name="PROGRAM_PARAMETERS" value="compile examples/char.xript" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="pl.baluch.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.pl.baluch.Main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e6940e8f-030f-41ab-b200-08e666cb01da" name="Changes" comment="" />
+      <created>1652521283796</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1652521283796</updated>
+      <workItem from="1652521285792" duration="4827000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Project moved to open source repo" />
+    <option name="LAST_COMMIT_MESSAGE" value="Project moved to open source repo" />
+  </component>
+</project>

@@ -1,0 +1,6 @@
+import java.lang.Double Double
+
+method main void
+  2 1.2 +
+  log
+end

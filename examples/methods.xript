@@ -1,0 +1,12 @@
+method test(name string, num int) char
+    num> log
+    name> log
+    num> log
+    '.'
+end
+
+method main void
+    "test1 " 123 test log
+    "\n" log
+    "test2 " 999 test log
+end

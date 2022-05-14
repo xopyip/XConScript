@@ -1,0 +1,12 @@
+method main void
+  if 1 2 < then
+    1 log
+    if 3 5 < then
+      2
+    else
+      3
+     end
+  else
+    0
+  end log
+end

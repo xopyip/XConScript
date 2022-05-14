@@ -1,0 +1,10 @@
+method main void
+  0
+    while dup 100 <= do
+      if dup 2 % 0 = then
+        dup log "\n" log
+      end
+      1 +
+    end
+  drop
+end
