@@ -2,9 +2,7 @@ package pl.baluch.xconscript.data;
 
 import org.objectweb.asm.ClassWriter;
 import org.objectweb.asm.Opcodes;
-import org.objectweb.asm.tree.ClassNode;
-import org.objectweb.asm.tree.InnerClassNode;
-import org.objectweb.asm.tree.MethodNode;
+import org.objectweb.asm.tree.*;
 import pl.baluch.xconscript.ScriptClassLoader;
 
 import java.io.File;
@@ -30,19 +28,28 @@ public class Script {
     public void saveClass(File outputFile) {
         dirty = false;
         ClassWriter cWriter = new ClassWriter(ClassWriter.COMPUTE_MAXS);
+
+        if (getMethods().stream().noneMatch(methodNode -> methodNode.name.equals("main") && methodNode.desc.equalsIgnoreCase("([Ljava/lang/String;)V"))) {
+            System.out.println("Adding entrypoint to main()V");
+            MethodNode entryPoint = new MethodNode(Opcodes.ACC_PUBLIC | Opcodes.ACC_STATIC, "main", "([Ljava/lang/String;)V", null, null);
+            entryPoint.instructions.add(new MethodInsnNode(Opcodes.INVOKESTATIC, name, "main", "()V", false));
+            entryPoint.instructions.add(new InsnNode(Opcodes.RETURN));
+            classNode.methods.add(entryPoint);
+        }
+
         classNode.accept(cWriter);
 
-        try(FileOutputStream fos = new FileOutputStream(outputFile)){
+        try (FileOutputStream fos = new FileOutputStream(outputFile)) {
             fos.write(cWriter.toByteArray());
             fos.flush();
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     public Class<?> getScriptClass() throws ClassNotFoundException {
         //todo: calculate hash of each method
-        if(!dirty){
+        if (!dirty) {
             return scriptClassLoader.findClass(classNode.name);
         }
         dirty = false;
@@ -76,7 +83,7 @@ public class Script {
         return this.classNode.methods;
     }
 
-    public boolean containsMethod(String name){
+    public boolean containsMethod(String name) {
         return this.classNode.methods.stream().anyMatch(methodNode -> methodNode.name.equals(name));
     }
 }
