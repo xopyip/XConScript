@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e6940e8f-030f-41ab-b200-08e666cb01da" name="Changes" comment="Extract common build process to separate class">
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/baluch/commands/TestCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/baluch/utils/ConsoleColors.java" afterDir="false" />
+    <list default="true" id="e6940e8f-030f-41ab-b200-08e666cb01da" name="Changes" comment="implement basic testing command">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/Readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/baluch/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/baluch/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/baluch/commands/CommandArgumentList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/baluch/commands/CommandArgumentList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/baluch/commands/CompileCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/baluch/commands/CompileCommand.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,11 +62,11 @@
       <recent name="C:\Users\xopyi\IdeaProjects\XConScript\examples" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.test all">
-    <configuration name="dump" type="Application" factoryName="Application">
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="pl.baluch.Main" />
       <module name="XConScript.main" />
-      <option name="PROGRAM_PARAMETERS" value="dump test.class" />
+      <option name="PROGRAM_PARAMETERS" value="compile examples/while.xript examples/char.xript" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="pl.baluch.xconscript.*" />
@@ -79,10 +77,10 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="pl.baluch.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="dump" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="pl.baluch.Main" />
       <module name="XConScript.main" />
-      <option name="PROGRAM_PARAMETERS" value="compile examples/while.xript" />
+      <option name="PROGRAM_PARAMETERS" value="dump test.class" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="pl.baluch.xconscript.*" />
@@ -110,11 +108,11 @@
     <list>
       <item itemvalue="Application.dump" />
       <item itemvalue="Application.test all" />
-      <item itemvalue="Application.pl.baluch.Main" />
+      <item itemvalue="Application.Main" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.pl.baluch.Main" />
+        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -171,7 +169,14 @@
       <option name="project" value="LOCAL" />
       <updated>1653999545026</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="implement basic testing command">
+      <created>1654001100875</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1654001100875</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -195,6 +200,7 @@
     <MESSAGE value="add output for each example" />
     <MESSAGE value="add readme file" />
     <MESSAGE value="Extract common build process to separate class" />
-    <option name="LAST_COMMIT_MESSAGE" value="Extract common build process to separate class" />
+    <MESSAGE value="implement basic testing command" />
+    <option name="LAST_COMMIT_MESSAGE" value="implement basic testing command" />
   </component>
 </project>

@@ -10,25 +10,27 @@ public class CompileCommand implements Command{
 
     @Override
     public void execute(CommandArgumentList args) {
-        File scriptFile = args.getArgument(0);
-        if(!scriptFile.exists()){
-            return;
-        }
-        BuildContext buildContext = new BuildContext();
-        String className = scriptFile.getName().toLowerCase().split("\\.")[0];
-        className = "Script" + className.substring(0, 1).toUpperCase() + className.substring(1);
-        try {
-            Script script = buildContext.build(scriptFile, className);
-
-            System.out.println("\nMethods of \"" + className + "\":");
-            for (MethodNode method : script.getMethods()) {
-                System.out.println(method.name + method.desc + " (" + method.instructions.size() + " instructions)");
+        for(int i = 0; i<args.argCount(); i++){
+            File scriptFile = args.getArgument(i, CommandArgumentType.FILE);
+            if(!scriptFile.exists()){
+                return;
             }
-            script.saveClass(new File(scriptFile.getParentFile(), className + ".class"));
-            System.out.println("\nClass saved to " + scriptFile.getParentFile().getAbsolutePath());
-            System.out.println("\nRun it using java -cp " + scriptFile.getParentFile().getAbsolutePath() + " " + className);
-        } catch (Throwable e) {
-            e.printStackTrace();
+            BuildContext buildContext = new BuildContext();
+            String className = scriptFile.getName().substring(0, scriptFile.getName().length() - ".xript".length());
+            className = className.substring(0, 1).toUpperCase() + className.substring(1);
+            try {
+                Script script = buildContext.build(scriptFile, className);
+
+                System.out.println("\nMethods of \"" + className + "\":");
+                for (MethodNode method : script.getMethods()) {
+                    System.out.println(method.name + method.desc + " (" + method.instructions.size() + " instructions)");
+                }
+                script.saveClass(new File(scriptFile.getParentFile(), className + ".class"));
+                System.out.println("\nClass saved to " + scriptFile.getParentFile().getAbsolutePath());
+                System.out.println("\nRun it using java -cp " + scriptFile.getParentFile().getAbsolutePath() + " " + className);
+            } catch (Throwable e) {
+                e.printStackTrace();
+            }
         }
 
     }
