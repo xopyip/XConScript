@@ -4,11 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e6940e8f-030f-41ab-b200-08e666cb01da" name="Changes" comment="Project moved to open source repo">
-      <change afterPath="$PROJECT_DIR$/test.java" afterDir="false" />
+    <list default="true" id="e6940e8f-030f-41ab-b200-08e666cb01da" name="Changes" comment="add readme file">
+      <change afterPath="$PROJECT_DIR$/src/main/java/pl/baluch/commands/Command.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pl/baluch/commands/CommandArgument.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pl/baluch/commands/CommandArgumentList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pl/baluch/commands/CommandArgumentListBuilder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pl/baluch/commands/CommandArgumentType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pl/baluch/commands/CompileCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pl/baluch/commands/DumpCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/baluch/xconscript/data/DataType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/baluch/xconscript/data/DataType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/baluch/xconscript/data/Script.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/baluch/xconscript/data/Script.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/baluch/ClassDumper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/baluch/ClassDumper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/baluch/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/baluch/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,6 +26,15 @@
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
     </projectState>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Enum" />
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -32,17 +48,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/xopyi/IdeaProjects/XConScript",
-    "nodejs_package_manager_path": "npm"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/xopyi/IdeaProjects/XConScript&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="pl.baluch" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\xopyi\IdeaProjects\XConScript" />
     </key>
@@ -50,14 +69,14 @@
       <recent name="C:\Users\xopyi\IdeaProjects\XConScript\examples" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Application.pl.baluch.Main">
+    <configuration name="dump" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="pl.baluch.Main" />
       <module name="XConScript.main" />
-      <option name="PROGRAM_PARAMETERS" value="compile examples/while.xript" />
+      <option name="PROGRAM_PARAMETERS" value="dump test.class" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="pl.baluch.*" />
+          <option name="PATTERN" value="pl.baluch.commands.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -65,13 +84,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="dump" type="Application" factoryName="Application">
+    <configuration name="pl.baluch.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="pl.baluch.Main" />
       <module name="XConScript.main" />
-      <option name="PROGRAM_PARAMETERS" value="dump test.class" />
+      <option name="PROGRAM_PARAMETERS" value="compile examples/while.xript" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="pl.baluch.*" />
+          <option name="PATTERN" value="pl.baluch.commands.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -81,11 +100,11 @@
     </configuration>
     <list>
       <item itemvalue="Application.dump" />
-      <item itemvalue="Application.Main" />
+      <item itemvalue="Application.pl.baluch.Main" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.pl.baluch.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -97,7 +116,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1652521283796</updated>
-      <workItem from="1652521285792" duration="7192000" />
+      <workItem from="1652521285792" duration="9521000" />
+      <workItem from="1653996473320" duration="1162000" />
     </task>
     <task id="LOCAL-00001" summary="Project moved to open source repo">
       <created>1652535428729</created>
@@ -106,7 +126,35 @@
       <option name="project" value="LOCAL" />
       <updated>1652535428729</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="fix entrypoint (to be removed when arrays would be implemented)">
+      <created>1652541513205</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1652541513205</updated>
+    </task>
+    <task id="LOCAL-00003" summary="fix comparisons similar types (for example Char and Integer)">
+      <created>1652541539149</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1652541539149</updated>
+    </task>
+    <task id="LOCAL-00004" summary="add output for each example">
+      <created>1652541565793</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1652541565793</updated>
+    </task>
+    <task id="LOCAL-00005" summary="add readme file">
+      <created>1652542990736</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1652542990736</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -125,6 +173,10 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Project moved to open source repo" />
-    <option name="LAST_COMMIT_MESSAGE" value="Project moved to open source repo" />
+    <MESSAGE value="fix entrypoint (to be removed when arrays would be implemented)" />
+    <MESSAGE value="fix comparisons similar types (for example Char and Integer)" />
+    <MESSAGE value="add output for each example" />
+    <MESSAGE value="add readme file" />
+    <option name="LAST_COMMIT_MESSAGE" value="add readme file" />
   </component>
 </project>

@@ -1,15 +1,18 @@
-package pl.baluch;
+package pl.baluch.commands;
 
 import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.tree.*;
+import pl.baluch.commands.*;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.util.Arrays;
 import java.util.ListIterator;
 
-public class ClassDumper {
-    public static void dump(File testFile) {
+public class DumpCommand implements Command {
+    @Override
+    public void execute(CommandArgumentList args) {
+        File testFile = args.getArgument(0);
         try {
             FileInputStream fileInputStream = new FileInputStream(testFile);
             byte[] bytes = new byte[1024 * 1024];
@@ -57,5 +60,21 @@ public class ClassDumper {
             e.printStackTrace();
         }
 
+    }
+
+    @Override
+    public String getName() {
+        return "dump";
+    }
+
+    @Override
+    public String getDescription() {
+        return "Dump .class file";
+    }
+
+    @Override
+    public CommandArgumentListBuilder getArgs() {
+        return new CommandArgumentListBuilder()
+                .add(CommandArgumentType.FILE.of("class file"));
     }
 }
