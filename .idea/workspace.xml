@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e6940e8f-030f-41ab-b200-08e666cb01da" name="Changes" comment="implement basic testing command">
+    <list default="true" id="e6940e8f-030f-41ab-b200-08e666cb01da" name="Changes" comment="feat: test command stats">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/baluch/commands/CommandArgumentList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/baluch/commands/CommandArgumentList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/baluch/commands/CompileCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/baluch/commands/CompileCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/baluch/commands/TestCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/baluch/commands/TestCommand.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,7 +61,7 @@
       <recent name="C:\Users\xopyi\IdeaProjects\XConScript\examples" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="Application.test all">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="pl.baluch.Main" />
       <module name="XConScript.main" />
@@ -176,7 +175,14 @@
       <option name="project" value="LOCAL" />
       <updated>1654001100875</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="feat: compile multiple scripts at once">
+      <created>1654007435027</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1654007435027</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -201,6 +207,8 @@
     <MESSAGE value="add readme file" />
     <MESSAGE value="Extract common build process to separate class" />
     <MESSAGE value="implement basic testing command" />
-    <option name="LAST_COMMIT_MESSAGE" value="implement basic testing command" />
+    <MESSAGE value="feat: compile multiple scripts at once" />
+    <MESSAGE value="feat: test command stats" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: test command stats" />
   </component>
 </project>

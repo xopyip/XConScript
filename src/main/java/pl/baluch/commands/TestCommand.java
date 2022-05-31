@@ -13,15 +13,18 @@ public class TestCommand implements Command {
     public void execute(CommandArgumentList args) {
         File file = args.getArgument(0);
         //todo: check if terminal supports colors
+        TestCounter testCounter = new TestCounter();
         if (file.isDirectory()) {
             System.out.println(ConsoleColors.GREEN + "Testing all scripts in \"" + file.getName() + "\"..." + ConsoleColors.RESET);
-            testDir(file);
+            testDir(file, testCounter);
+            testCounter.print();
         } else {
-            testScript(file);
+            testScript(file, testCounter);
         }
     }
 
-    private void testScript(File file) {
+    private void testScript(File file, TestCounter testCounter) {
+        testCounter.incrTests();
         PrintStream defaultOut = System.out;
 
         String className = file.getName().substring(0, file.getName().length() - ".xript".length());
@@ -30,11 +33,12 @@ public class TestCommand implements Command {
         File outFile = new File(file.getParentFile(), className + ".out");
         if (!outFile.exists()) {
             System.out.println(ConsoleColors.RED + "No output file found for \"" + className + "\"" + ConsoleColors.RESET);
+            testCounter.incrSkipped();
             return;
         }
 
         String expectedOutput = "";
-        try(FileInputStream fileInputStream = new FileInputStream(outFile)) {
+        try (FileInputStream fileInputStream = new FileInputStream(outFile)) {
             expectedOutput = new String(fileInputStream.readAllBytes());
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -65,15 +69,16 @@ public class TestCommand implements Command {
             System.out.println(ConsoleColors.YELLOW + "Expected: " + expectedOutput + ConsoleColors.RESET);
             System.out.println(ConsoleColors.YELLOW + "Output: " + output + ConsoleColors.RESET);
         }
+        testCounter.incrSuccesses();
 
     }
 
-    private void testDir(File file) {
+    private void testDir(File file, TestCounter testCounter) {
         for (File f : Objects.requireNonNull(file.listFiles((dir, name) -> name.endsWith(".xript")))) {
             if (f.isDirectory()) {
-                testDir(f);
+                testDir(f, testCounter);
             } else {
-                testScript(f);
+                testScript(f, testCounter);
             }
         }
     }
@@ -92,5 +97,44 @@ public class TestCommand implements Command {
     public CommandArgumentListBuilder getArgs() {
         return new CommandArgumentListBuilder()
                 .add(CommandArgumentType.FILE.of("script/dir"));
+    }
+
+    private static class TestCounter {
+        private int tests = 0;
+        private int successes = 0;
+        private int skipped = 0;
+
+        public void incrTests() {
+            tests++;
+        }
+
+        public void incrSuccesses() {
+            successes++;
+        }
+
+        public void print() {
+            String header = ConsoleColors.RESET + "Tests: " + tests + " (";
+            String body = "";
+            if (successes > 0)
+                body = appendBody(body, ConsoleColors.GREEN + successes + " successful" + ConsoleColors.RESET);
+            if (skipped > 0)
+                body = appendBody(body, ConsoleColors.YELLOW + skipped + " skipped" + ConsoleColors.RESET);
+            int failed = tests - successes - skipped;
+            if (failed > 0)
+                body = appendBody(body, ConsoleColors.RED + failed + " failed" + ConsoleColors.RESET);
+            System.out.println(header + body + ")");
+        }
+
+        private static String appendBody(String body, String s) {
+            if (body.length() > 0) {
+                body += ", ";
+            }
+            body += s;
+            return body;
+        }
+
+        public void incrSkipped() {
+            skipped++;
+        }
     }
 }
