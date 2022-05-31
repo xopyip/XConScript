@@ -4,18 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e6940e8f-030f-41ab-b200-08e666cb01da" name="Changes" comment="add readme file">
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/baluch/commands/Command.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/baluch/commands/CommandArgument.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/baluch/commands/CommandArgumentList.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/baluch/commands/CommandArgumentListBuilder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/baluch/commands/CommandArgumentType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/baluch/commands/CompileCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/baluch/commands/DumpCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+    <list default="true" id="e6940e8f-030f-41ab-b200-08e666cb01da" name="Changes" comment="refactor compiler commands">
+      <change afterPath="$PROJECT_DIR$/src/main/java/pl/baluch/xconscript/BuildContext.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/baluch/ClassDumper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/baluch/ClassDumper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/baluch/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/baluch/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/baluch/commands/CompileCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/baluch/commands/CompileCommand.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,6 +52,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="pl.baluch.commands" />
       <recent name="pl.baluch" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
@@ -76,7 +69,7 @@
       <option name="PROGRAM_PARAMETERS" value="dump test.class" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="pl.baluch.commands.*" />
+          <option name="PATTERN" value="pl.baluch.xconscript.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -90,7 +83,7 @@
       <option name="PROGRAM_PARAMETERS" value="compile examples/while.xript" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="pl.baluch.commands.*" />
+          <option name="PATTERN" value="pl.baluch.xconscript.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>

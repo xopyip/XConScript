@@ -1,15 +1,10 @@
 package pl.baluch.commands;
 
 import org.objectweb.asm.tree.MethodNode;
-import pl.baluch.xconscript.ScriptCompiler;
-import pl.baluch.xconscript.ScriptLexer;
-import pl.baluch.xconscript.ScriptParser;
-import pl.baluch.xconscript.data.ParseContext;
+import pl.baluch.xconscript.BuildContext;
 import pl.baluch.xconscript.data.Script;
-import pl.baluch.xconscript.tokens.Token;
 
 import java.io.File;
-import java.util.List;
 
 public class CompileCommand implements Command{
 
@@ -19,15 +14,11 @@ public class CompileCommand implements Command{
         if(!scriptFile.exists()){
             return;
         }
-        ScriptLexer lexer = new ScriptLexer();
-        ScriptParser parser = new ScriptParser();
-        ScriptCompiler compiler = new ScriptCompiler();
+        BuildContext buildContext = new BuildContext();
+        String className = scriptFile.getName().toLowerCase().split("\\.")[0];
+        className = "Script" + className.substring(0, 1).toUpperCase() + className.substring(1);
         try {
-            List<Token<?>> tokens = lexer.tokenize(scriptFile);
-            ParseContext ctx = parser.parse(tokens);
-            String className = scriptFile.getName().toLowerCase().split("\\.")[0];
-            className = "Script" + className.substring(0, 1).toUpperCase() + className.substring(1);
-            Script script = compiler.compile(className, ctx);
+            Script script = buildContext.build(scriptFile, className);
 
             System.out.println("\nMethods of \"" + className + "\":");
             for (MethodNode method : script.getMethods()) {
