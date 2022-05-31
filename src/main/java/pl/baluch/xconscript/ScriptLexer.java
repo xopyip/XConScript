@@ -17,6 +17,14 @@ public class ScriptLexer {
         List<StringLocation> words = new ArrayList<>();
         for (int i = 0; i < lines.size(); i++) {
             String line = lines.get(i);
+            int commentIndex = line.lastIndexOf("//");
+            while(commentIndex != -1) {
+                String lineCandidate = line.substring(0, commentIndex);
+                if(lineCandidate.chars().filter(c -> c == '"').count() % 2 == 0){ // comment is not inside string
+                    line = lineCandidate;
+                }
+                commentIndex = line.lastIndexOf("//", commentIndex - 1);
+            }
             for (int x = line.indexOf(line.trim()); x < line.length(); x = line.indexOf(" ", x + 1) + 1) {
                 int nextSpace = line.indexOf(" ", x + 1);
                 if (nextSpace == -1) {
@@ -54,7 +62,7 @@ public class ScriptLexer {
                 tokens.add(new PushToken<>(stringLocation.location(), word, Double.parseDouble(word)));
             } else if (word.startsWith("\"")) {
                 StringBuilder str = new StringBuilder(word);
-                if (!word.endsWith("\"")) {
+                if (!word.endsWith("\"") || word.length() == 1) {
                     while (!words.isEmpty() && !words.get(0).string().endsWith("\"")) {
                         str.append(" ").append(words.remove(0).string());
                     }

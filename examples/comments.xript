@@ -1,0 +1,14 @@
+method main void //entrypoint
+  var test char
+  //test 123
+  'a' >test
+// another comment test //comment in line with comment
+  0
+    while dup 10 < do
+      test> dup 1 + >test log
+      1 +
+    end
+  drop
+end
+
+//comment at the end

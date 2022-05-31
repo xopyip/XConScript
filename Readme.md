@@ -4,7 +4,7 @@
 > I want to learn about parsers, lexers, compilers and also about architecture of JVM.
 
 ## TODO:
- - [ ] Add support for comments
+ - [x] Add support for comments
  - [ ] Add support for longs
  - [x] Implement proper testing framework
  - [ ] Add block editor (something like Scratch)
