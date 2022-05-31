@@ -3,13 +3,15 @@ package pl.baluch;
 import pl.baluch.commands.Command;
 import pl.baluch.commands.CompileCommand;
 import pl.baluch.commands.DumpCommand;
+import pl.baluch.commands.TestCommand;
 
 import java.util.Arrays;
 
 public class Main {
     private static final Command[] COMMANDS = new Command[]{
             new CompileCommand(),
-            new DumpCommand()
+            new DumpCommand(),
+            new TestCommand()
     };
     public static void main(String[] args) {
         if(args.length < 2) {
