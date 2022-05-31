@@ -1,0 +1,7 @@
+method main void
+"test" log "\n" log
+"test " log "\n" log
+" test" log "\n" log
+" test " log "\n" log
+" te\tst " log "\n" log
+end

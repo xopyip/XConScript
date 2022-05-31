@@ -39,7 +39,7 @@ public class TestCommand implements Command {
 
         String expectedOutput = "";
         try (FileInputStream fileInputStream = new FileInputStream(outFile)) {
-            expectedOutput = new String(fileInputStream.readAllBytes());
+            expectedOutput = new String(fileInputStream.readAllBytes()).replaceAll("\r\n", "\n");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -58,18 +58,18 @@ public class TestCommand implements Command {
 
             System.setOut(defaultOut);
 
-            output = scriptOut.toString();
+            output = scriptOut.toString().replaceAll("\r\n", "\n");
         } catch (Throwable e) {
             e.printStackTrace();
         }
 
 
-        if (output.replaceAll("\r\n", "\n").equals(expectedOutput.replaceAll("\r\n", "\n"))) {
+        if (output.equals(expectedOutput)) {
             testCounter.incrSuccesses();
         } else {
             System.out.println(ConsoleColors.RED + "Output for \"" + className + "\" is not as expected" + ConsoleColors.RESET);
-            System.out.println(ConsoleColors.YELLOW + "Expected: " + expectedOutput + ConsoleColors.RESET);
-            System.out.println(ConsoleColors.YELLOW + "Output: " + output + ConsoleColors.RESET);
+            System.out.println(ConsoleColors.YELLOW + "Expected: \r\n" + expectedOutput + ConsoleColors.RESET);
+            System.out.println(ConsoleColors.YELLOW + "Output: \r\n" + output + ConsoleColors.RESET);
         }
 
     }
