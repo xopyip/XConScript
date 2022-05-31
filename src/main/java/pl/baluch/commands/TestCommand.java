@@ -64,12 +64,13 @@ public class TestCommand implements Command {
         }
 
 
-        if (!output.replaceAll("\r\n", "\n").equals(expectedOutput.replaceAll("\r\n", "\n"))) {
+        if (output.replaceAll("\r\n", "\n").equals(expectedOutput.replaceAll("\r\n", "\n"))) {
+            testCounter.incrSuccesses();
+        } else {
             System.out.println(ConsoleColors.RED + "Output for \"" + className + "\" is not as expected" + ConsoleColors.RESET);
             System.out.println(ConsoleColors.YELLOW + "Expected: " + expectedOutput + ConsoleColors.RESET);
             System.out.println(ConsoleColors.YELLOW + "Output: " + output + ConsoleColors.RESET);
         }
-        testCounter.incrSuccesses();
 
     }
 
