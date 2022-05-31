@@ -5,7 +5,7 @@
 
 ## TODO:
  - [x] Add support for comments
- - [ ] Add support for longs
+ - [x] Add support for longs
  - [x] Implement proper testing framework
  - [ ] Add block editor (something like Scratch)
  - [ ] Add support for Minecraft server scripting

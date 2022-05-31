@@ -18,9 +18,9 @@ public class ScriptLexer {
         for (int i = 0; i < lines.size(); i++) {
             String line = lines.get(i);
             int commentIndex = line.lastIndexOf("//");
-            while(commentIndex != -1) {
+            while (commentIndex != -1) {
                 String lineCandidate = line.substring(0, commentIndex);
-                if(lineCandidate.chars().filter(c -> c == '"').count() % 2 == 0){ // comment is not inside string
+                if (lineCandidate.chars().filter(c -> c == '"').count() % 2 == 0) { // comment is not inside string
                     line = lineCandidate;
                 }
                 commentIndex = line.lastIndexOf("//", commentIndex - 1);
@@ -57,7 +57,16 @@ public class ScriptLexer {
                 }
                 tokens.add(new PushToken<>(stringLocation.location(), word, s.charAt(0)));
             } else if (word.matches("-?(0|([1-9][0-9]*))")) {
-                tokens.add(new PushToken<>(stringLocation.location(), word, Integer.parseInt(word)));
+                try{
+                    long l = Long.parseLong(word);
+                    if (l <= Integer.MAX_VALUE && l >= Integer.MIN_VALUE) {
+                        tokens.add(new PushToken<>(stringLocation.location(), word, (int) l));
+                    } else {
+                        tokens.add(new PushToken<>(stringLocation.location(), word, l));
+                    }
+                }catch (NumberFormatException e){
+                    throw new RuntimeException("Invalid number: " + word + " at " + stringLocation.location());
+                }
             } else if (word.matches("-?(0|([1-9][0-9]*))\\.[0-9]*")) {
                 tokens.add(new PushToken<>(stringLocation.location(), word, Double.parseDouble(word)));
             } else if (word.startsWith("\"")) {
@@ -84,8 +93,8 @@ public class ScriptLexer {
     private record StringLocation(String string, TokenLocation location) {
 
         @Override
-            public String toString() {
-                return location.toString() + ": " + string;
-            }
+        public String toString() {
+            return location.toString() + ": " + string;
         }
+    }
 }

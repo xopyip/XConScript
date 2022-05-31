@@ -1,6 +1,49 @@
 import java.lang.Double Double
 
 method main void
-  2 1.2 +
-  log
+  //double and double
+  2.2 1.2 +
+  log "\n" log
+  2.2 1.2 -
+  log "\n" log
+  2.2 1.2 *
+  log "\n" log
+  2.2 1.2 /
+  log "\n" log
+
+  //double and int
+  2.2 1 +
+  log "\n" log
+  2.2 1 -
+  log "\n" log
+  2.2 1 *
+  log "\n" log
+  2.2 1 /
+  log "\n" log
+  2.2 1 +
+  log "\n" log
+  2.2 1 -
+  log "\n" log
+  2.2 1 *
+  log "\n" log
+  2.2 1 /
+  log "\n" log
+  1 2.2 +
+  log "\n" log
+  1 2.2 -
+  log "\n" log
+  1 2.2 *
+  log "\n" log
+  1 2.2 /
+  log "\n" log
+  1 2.2 +
+  log "\n" log
+  1 2.2 -
+  log "\n" log
+  1 2.2 *
+  log "\n" log
+  1 2.2 /
+  log "\n" log
+
+
 end

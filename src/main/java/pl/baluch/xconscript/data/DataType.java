@@ -9,6 +9,7 @@ import java.util.Objects;
 
 public class DataType {
     public static final DataType INT = new DataType("int", Opcodes.INTEGER, Type.INT_TYPE, int.class);
+    public static final DataType LONG = new DataType("long", Opcodes.LONG, Type.LONG_TYPE, long.class);
     public static final DataType DOUBLE = new DataType("double", Opcodes.DOUBLE, Type.DOUBLE_TYPE, double.class);
     public static final DataType CHAR = new DataType("char", Opcodes.INTEGER, Type.INT_TYPE,  int.class);
     public static final DataType VOID = new DataType("void", -1, Type.VOID_TYPE,  void.class);
@@ -20,7 +21,7 @@ public class DataType {
     private final Object o;
     private final Type type;
     private final Class<?> typeClass;
-    private static final DataType[] values = new DataType[]{INT, STRING, CHAR, VOID, DOUBLE};
+    private static final DataType[] values = new DataType[]{INT, LONG, STRING, CHAR, VOID, DOUBLE};
 
     DataType(String name, Object o, Type type, Class<?> typeClass) {
         this.name = name;
@@ -32,7 +33,7 @@ public class DataType {
     public static DataType getByClass(Class<?> returnType) {
         //note: computational type 2 class and primitive cannot be merged
         if(returnType == long.class || returnType == Long.class) {
-            throw new RuntimeException("Long type is not supported");
+            return LONG;
         }
         if(returnType == Character.class || returnType == char.class) {
             return CHAR;
@@ -112,7 +113,7 @@ public class DataType {
     }
 
     public static boolean isType2(DataType dataType) {
-        return dataType.equals(DOUBLE); // todo: add long
+        return dataType.equals(DOUBLE) || dataType.equals(LONG);
     }
 
     @Override

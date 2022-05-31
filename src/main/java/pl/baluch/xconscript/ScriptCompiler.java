@@ -34,15 +34,17 @@ public class ScriptCompiler {
                 Object[] localVarTypes = parsedMethod.getVarTypes();
                 if (op instanceof Operation.Push<?> push) {// -> int
                     Object operand = push.getOperand();
-                    if(operand instanceof Integer){
-                        pushInt(stack, methodNode, (Integer)op.getOperand());
-                    }else if(operand instanceof Double){
-                        pushDouble(stack, methodNode, (Double)op.getOperand());
-                    }else if(operand instanceof Character){
-                        pushChar(stack, methodNode, (Character)op.getOperand());
-                    }else if(operand instanceof String){
-                        pushString(stack, methodNode, (String)op.getOperand());
-                    }else {
+                    if (operand instanceof Integer) {
+                        pushInt(stack, methodNode, (Integer) op.getOperand());
+                    } else if (operand instanceof Long) {
+                        pushLong(stack, methodNode, (Long) op.getOperand());
+                    } else if (operand instanceof Double) {
+                        pushDouble(stack, methodNode, (Double) op.getOperand());
+                    } else if (operand instanceof Character) {
+                        pushChar(stack, methodNode, (Character) op.getOperand());
+                    } else if (operand instanceof String) {
+                        pushString(stack, methodNode, (String) op.getOperand());
+                    } else {
                         throw new RuntimeException("Unknown operand type: " + operand.getClass());
                     }
                 } else if (op instanceof Operation.Add) {//int int -> int
@@ -56,6 +58,13 @@ public class ScriptCompiler {
                                     .addOverride(DataType.DOUBLE, DataType.DOUBLE, DataType.DOUBLE, Opcodes.DADD)
                                     .addOverride(DataType.DOUBLE, DataType.INT, DataType.DOUBLE, Opcodes.DADD)
                                     .addOverride(DataType.INT, DataType.DOUBLE, DataType.DOUBLE, Opcodes.DADD)
+
+                                    .addOverride(DataType.LONG, DataType.DOUBLE, DataType.DOUBLE, Opcodes.DADD)
+                                    .addOverride(DataType.DOUBLE, DataType.LONG, DataType.DOUBLE, Opcodes.DADD)
+
+                                    .addOverride(DataType.LONG, DataType.LONG, DataType.LONG, Opcodes.LADD)
+                                    .addOverride(DataType.LONG, DataType.INT, DataType.LONG, Opcodes.LADD)
+                                    .addOverride(DataType.INT, DataType.LONG, DataType.LONG, Opcodes.LADD)
                     );
                 } else if (op instanceof Operation.Sub) {//int int -> int
                     mathOperation(stack, methodNode, op,
@@ -64,9 +73,16 @@ public class ScriptCompiler {
                                     .addOverride(DataType.CHAR, DataType.INT, DataType.CHAR, Opcodes.ISUB)
                                     .addOverride(DataType.INT, DataType.CHAR, DataType.CHAR, Opcodes.ISUB)
 
-                                    .addOverride(DataType.DOUBLE, DataType.DOUBLE, DataType.DOUBLE, Opcodes.DADD)
-                                    .addOverride(DataType.DOUBLE, DataType.INT, DataType.DOUBLE, Opcodes.DADD)
-                                    .addOverride(DataType.INT, DataType.DOUBLE, DataType.DOUBLE, Opcodes.DADD)
+                                    .addOverride(DataType.DOUBLE, DataType.DOUBLE, DataType.DOUBLE, Opcodes.DSUB)
+                                    .addOverride(DataType.DOUBLE, DataType.INT, DataType.DOUBLE, Opcodes.DSUB)
+                                    .addOverride(DataType.INT, DataType.DOUBLE, DataType.DOUBLE, Opcodes.DSUB)
+
+                                    .addOverride(DataType.DOUBLE, DataType.LONG, DataType.DOUBLE, Opcodes.DSUB)
+                                    .addOverride(DataType.LONG, DataType.DOUBLE, DataType.DOUBLE, Opcodes.DSUB)
+
+                                    .addOverride(DataType.LONG, DataType.LONG, DataType.LONG, Opcodes.LSUB)
+                                    .addOverride(DataType.LONG, DataType.INT, DataType.LONG, Opcodes.LSUB)
+                                    .addOverride(DataType.INT, DataType.LONG, DataType.LONG, Opcodes.LSUB)
                     );
                 } else if (op instanceof Operation.Mul) {//int int -> int
                     mathOperation(stack, methodNode, op,
@@ -75,9 +91,16 @@ public class ScriptCompiler {
                                     .addOverride(DataType.CHAR, DataType.INT, DataType.CHAR, Opcodes.IMUL)
                                     .addOverride(DataType.INT, DataType.CHAR, DataType.CHAR, Opcodes.IMUL)
 
-                                    .addOverride(DataType.DOUBLE, DataType.DOUBLE, DataType.DOUBLE, Opcodes.DADD)
-                                    .addOverride(DataType.DOUBLE, DataType.INT, DataType.DOUBLE, Opcodes.DADD)
-                                    .addOverride(DataType.INT, DataType.DOUBLE, DataType.DOUBLE, Opcodes.DADD)
+                                    .addOverride(DataType.DOUBLE, DataType.DOUBLE, DataType.DOUBLE, Opcodes.DMUL)
+                                    .addOverride(DataType.DOUBLE, DataType.INT, DataType.DOUBLE, Opcodes.DMUL)
+                                    .addOverride(DataType.INT, DataType.DOUBLE, DataType.DOUBLE, Opcodes.DMUL)
+
+                                    .addOverride(DataType.DOUBLE, DataType.LONG, DataType.DOUBLE, Opcodes.DMUL)
+                                    .addOverride(DataType.LONG, DataType.DOUBLE, DataType.DOUBLE, Opcodes.DMUL)
+
+                                    .addOverride(DataType.LONG, DataType.LONG, DataType.LONG, Opcodes.LMUL)
+                                    .addOverride(DataType.LONG, DataType.INT, DataType.LONG, Opcodes.LMUL)
+                                    .addOverride(DataType.INT, DataType.LONG, DataType.LONG, Opcodes.LMUL)
                     );
                 } else if (op instanceof Operation.Div) {//int int -> int
                     mathOperation(stack, methodNode, op,
@@ -86,9 +109,16 @@ public class ScriptCompiler {
                                     .addOverride(DataType.CHAR, DataType.INT, DataType.CHAR, Opcodes.IDIV)
                                     .addOverride(DataType.INT, DataType.CHAR, DataType.CHAR, Opcodes.IDIV)
 
-                                    .addOverride(DataType.DOUBLE, DataType.DOUBLE, DataType.DOUBLE, Opcodes.DADD)
-                                    .addOverride(DataType.DOUBLE, DataType.INT, DataType.DOUBLE, Opcodes.DADD)
-                                    .addOverride(DataType.INT, DataType.DOUBLE, DataType.DOUBLE, Opcodes.DADD)
+                                    .addOverride(DataType.DOUBLE, DataType.DOUBLE, DataType.DOUBLE, Opcodes.DDIV)
+                                    .addOverride(DataType.DOUBLE, DataType.INT, DataType.DOUBLE, Opcodes.DDIV)
+                                    .addOverride(DataType.INT, DataType.DOUBLE, DataType.DOUBLE, Opcodes.DDIV)
+
+                                    .addOverride(DataType.DOUBLE, DataType.LONG, DataType.DOUBLE, Opcodes.DDIV)
+                                    .addOverride(DataType.LONG, DataType.DOUBLE, DataType.DOUBLE, Opcodes.DDIV)
+
+                                    .addOverride(DataType.LONG, DataType.LONG, DataType.LONG, Opcodes.LDIV)
+                                    .addOverride(DataType.LONG, DataType.INT, DataType.LONG, Opcodes.LDIV)
+                                    .addOverride(DataType.INT, DataType.LONG, DataType.LONG, Opcodes.LDIV)
                     );
                 } else if (op instanceof Operation.Pow) {//int2 int1 -> int
                     if (stack.size() < 2 || stack.pop() != DataType.INT || stack.pop() != DataType.INT) {
@@ -140,6 +170,8 @@ public class ScriptCompiler {
                     }
                     if (DataType.INT.equals(type)) {
                         methodNode.instructions.add(new MethodInsnNode(Opcodes.INVOKEVIRTUAL, "java/io/PrintStream", "print", "(I)V", false));
+                    } else if (DataType.LONG.equals(type)) {
+                        methodNode.instructions.add(new MethodInsnNode(Opcodes.INVOKEVIRTUAL, "java/io/PrintStream", "print", "(J)V", false));
                     } else if (DataType.DOUBLE.equals(type)) {
                         methodNode.instructions.add(new MethodInsnNode(Opcodes.INVOKEVIRTUAL, "java/io/PrintStream", "print", "(D)V", false));
                     } else if (DataType.STRING.equals(type)) {
@@ -501,6 +533,10 @@ public class ScriptCompiler {
                 method.instructions.add(new MethodInsnNode(Opcodes.INVOKESTATIC, "java/lang/Integer", "valueOf", "(I)Ljava/lang/Integer;", false));
                 return Type.getType("Ljava/lang/Integer;");
             }
+            case "Ljava/lang/Long;" -> {
+                method.instructions.add(new MethodInsnNode(Opcodes.INVOKESTATIC, "java/lang/Long;", "valueOf", "(J)Ljava/lang/Long;;", false));
+                return Type.getType("Ljava/lang/Long;");
+            }
             case "Ljava/lang/Double;" -> {
                 method.instructions.add(new MethodInsnNode(Opcodes.INVOKESTATIC, "java/lang/Double;", "valueOf", "(D)Ljava/lang/Double;;", false));
                 return Type.getType("Ljava/lang/Double;");
@@ -519,8 +555,14 @@ public class ScriptCompiler {
         }
         DataType type1 = stack.pop();
         DataType type2 = stack.pop();
+        //todo: compare between different types
         if (type1.equals(DataType.DOUBLE) && type2.equals(DataType.DOUBLE)) {
             methodNode.instructions.add(new InsnNode(Opcodes.DCMPG));
+            methodNode.instructions.add(new InsnNode(Opcodes.ICONST_0));
+            type1 = DataType.INT;
+            type2 = DataType.INT;
+        }else if (type1.equals(DataType.LONG) && type2.equals(DataType.LONG)) {
+            methodNode.instructions.add(new InsnNode(Opcodes.LCMP));
             methodNode.instructions.add(new InsnNode(Opcodes.ICONST_0));
             type1 = DataType.INT;
             type2 = DataType.INT;
@@ -549,27 +591,44 @@ public class ScriptCompiler {
         for (OperationSignature.InsOuts override : signature.getOverrides()) {
             if (override.in1 == topValue && override.in2 == bottomValue) {
                 stack.push(override.out);
-                if (override.out == DataType.DOUBLE) {
-                    if (topValue == DataType.INT && bottomValue == DataType.DOUBLE) {
-                        methodNode.instructions.add(new InsnNode(Opcodes.I2D));
-                        methodNode.instructions.add(new InsnNode(override.opcode));
-                    } else if (topValue == DataType.DOUBLE && bottomValue == DataType.INT) {
-                        methodNode.instructions.add(new InsnNode(Opcodes.DUP2_X1));
-                        methodNode.instructions.add(new InsnNode(Opcodes.POP2));
-                        methodNode.instructions.add(new InsnNode(Opcodes.I2D));
-                        methodNode.instructions.add(new InsnNode(Opcodes.DUP2_X2));
-                        methodNode.instructions.add(new InsnNode(Opcodes.POP2));
-                        methodNode.instructions.add(new InsnNode(override.opcode));
-                    } else {
-                        methodNode.instructions.add(new InsnNode(override.opcode));
-                    }
-                    return;
-                }
+                castToEqualType(methodNode, override.out, topValue, bottomValue);
                 methodNode.instructions.add(new InsnNode(override.opcode));
                 return;
             }
         }
         throw new Exception("Wrong arguments for " + op + " operation: " + topValue.getASMType() + " " + bottomValue.getASMType());
+    }
+
+    private void castToEqualType(MethodNode methodNode, DataType out, DataType topValue, DataType bottomValue) {
+        if (out == DataType.DOUBLE) {
+            if (bottomValue == DataType.DOUBLE && topValue == DataType.INT) { //double int () -> double
+                methodNode.instructions.add(new InsnNode(Opcodes.I2D));
+            } else if (bottomValue == DataType.INT && topValue == DataType.DOUBLE) { //int double () -> double
+                methodNode.instructions.add(new InsnNode(Opcodes.DUP2_X1));
+                methodNode.instructions.add(new InsnNode(Opcodes.POP2));
+                methodNode.instructions.add(new InsnNode(Opcodes.I2D));
+                methodNode.instructions.add(new InsnNode(Opcodes.DUP2_X2));
+                methodNode.instructions.add(new InsnNode(Opcodes.POP2));
+            } else if(bottomValue == DataType.DOUBLE && topValue == DataType.LONG) { //double long () -> double
+                methodNode.instructions.add(new InsnNode(Opcodes.L2D));
+            }else if(bottomValue == DataType.LONG && topValue == DataType.DOUBLE) { //long double () -> double
+                methodNode.instructions.add(new InsnNode(Opcodes.DUP2_X2));
+                methodNode.instructions.add(new InsnNode(Opcodes.POP2));
+                methodNode.instructions.add(new InsnNode(Opcodes.L2D));
+                methodNode.instructions.add(new InsnNode(Opcodes.DUP2_X2));
+                methodNode.instructions.add(new InsnNode(Opcodes.POP2));
+            }
+        }else if(out == DataType.LONG){
+            if (bottomValue == DataType.LONG && topValue == DataType.INT) { //long int () -> long
+                methodNode.instructions.add(new InsnNode(Opcodes.I2L));
+            } else if (bottomValue == DataType.INT && topValue == DataType.LONG) { //int long () -> long
+                methodNode.instructions.add(new InsnNode(Opcodes.DUP2_X1));
+                methodNode.instructions.add(new InsnNode(Opcodes.POP2));
+                methodNode.instructions.add(new InsnNode(Opcodes.I2L));
+                methodNode.instructions.add(new InsnNode(Opcodes.DUP2_X2));
+                methodNode.instructions.add(new InsnNode(Opcodes.POP2));
+            }
+        }
     }
 
     private void pushChar(Stack stack, MethodNode methodNode, char value) {
@@ -593,6 +652,11 @@ public class ScriptCompiler {
         } else {
             methodNode.instructions.add(new LdcInsnNode(value));
         }
+    }
+
+    private void pushLong(Stack stack, MethodNode methodNode, long value) {
+        stack.push(DataType.LONG);
+        methodNode.instructions.add(new LdcInsnNode(value));
     }
 
     private void pushDouble(Stack stack, MethodNode methodNode, double value) {
