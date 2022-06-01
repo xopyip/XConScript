@@ -19,6 +19,12 @@ public class ScriptParser {
         public void endBlock(Block block, Stack<Block> blockSet, ParseContext ctx) {
         }
     };
+    private static final BlockType INLINE_BLOCK_TYPE = new BlockType(BlockType.BlockScope.GLOBAL, "inline", true) {
+        @Override
+        public void endBlock(Block block, Stack<Block> blockSet, ParseContext ctx) {
+            ctx.addInlineMethod(block.getBlockName(), block);
+        }
+    };
     private static final BlockType IF_BLOCK_TYPE = new BlockType(BlockType.BlockScope.LOCAL, "if", false) {
         @Override
         public void endBlock(Block currentBlock, Stack<Block> blockSet, ParseContext ctx) throws Exception {
@@ -59,8 +65,9 @@ public class ScriptParser {
     private final Map<String, BlockType> blockTypes = new HashMap<>();
 
     public ScriptParser(StdLib ... libs) {
-        blockTypes.put("method", METHOD_BLOCK_TYPE);
-        blockTypes.put("if", IF_BLOCK_TYPE);
+        registerBlock(METHOD_BLOCK_TYPE);
+        registerBlock(IF_BLOCK_TYPE);
+        registerBlock(INLINE_BLOCK_TYPE);
         for(StdLib lib : libs) {
             include(lib);
         }
@@ -345,6 +352,11 @@ public class ScriptParser {
                         throw new TokenException(token, "Cannot use method outside of method");
                     }
                     blockSet.peek().addOperation(new Operation.CallSelfMethod(((WordToken) token).getValue()));
+                } else if (ctx.getInlineMethods().containsKey(((WordToken) token).getValue())) {
+                    if (blockSet.isEmpty()) {
+                        throw new TokenException(token, "Cannot use inline method outside of method");
+                    }
+                    ctx.getInlineMethod(((WordToken) token).getValue()).getOperations().forEach(blockSet.peek()::addOperation);
                 } else if (globalMethods.containsKey(((WordToken) token).getValue())) {
                     if (blockSet.isEmpty()) {
                         throw new TokenException(token, "Cannot use method outside of method");

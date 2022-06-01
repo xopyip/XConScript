@@ -4,6 +4,7 @@ import java.util.*;
 
 public class ParseContext {
     private final Map<String, Block> methods = new HashMap<>();
+    private final Map<String, Block> inline = new HashMap<>();
 
     public ParseContext() {
     }
@@ -19,5 +20,17 @@ public class ParseContext {
 
     public Block getMethod(String name){
         return methods.get(name);
+    }
+
+    public void addInlineMethod(String blockName, Block block) {
+        inline.put(blockName, block);
+    }
+
+    public Map<String, Block> getInlineMethods() {
+        return inline;
+    }
+
+    public Block getInlineMethod(String name) {
+        return inline.get(name);
     }
 }

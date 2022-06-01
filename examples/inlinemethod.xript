@@ -1,0 +1,12 @@
+inline 3sum
+   + +
+end
+
+inline 2log
+  log log "\n" log
+end
+
+method main void
+  "Value: " 1 2 3 3sum swap 2log
+  "Value: " 5 7 9 3sum swap 2log
+end
