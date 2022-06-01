@@ -1,6 +1,7 @@
 package pl.baluch.commands;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class CommandArgumentListBuilder {
@@ -20,6 +21,14 @@ public class CommandArgumentListBuilder {
     }
 
     public CommandArgumentList build(String[] args){
-        return new CommandArgumentList(this.args, args);
+        List<String> argList = new ArrayList<>(Arrays.asList(args));
+        List<CommandFlag> flags = new ArrayList<>();
+        for (CommandFlag value : CommandFlag.values()) {
+            if (argList.contains(value.getFlag())) {
+                flags.add(value);
+                argList.remove(value.getFlag());
+            }
+        }
+        return new CommandArgumentList(flags, this.args, argList);
     }
 }

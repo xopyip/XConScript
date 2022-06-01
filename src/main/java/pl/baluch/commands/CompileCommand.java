@@ -5,6 +5,9 @@ import pl.baluch.xconscript.BuildContext;
 import pl.baluch.xconscript.data.Script;
 
 import java.io.File;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Set;
 
 public class CompileCommand implements Command{
 
@@ -20,14 +23,20 @@ public class CompileCommand implements Command{
             className = className.substring(0, 1).toUpperCase() + className.substring(1);
             try {
                 Script script = buildContext.build(scriptFile, className);
-
-                System.out.println("\nMethods of \"" + className + "\":");
-                for (MethodNode method : script.getMethods()) {
-                    System.out.println(method.name + method.desc + " (" + method.instructions.size() + " instructions)");
+                if(args.hasFlag(CommandFlag.DEBUG)){
+                    System.out.println("\nMethods of \"" + className + "\":");
+                    for (MethodNode method : script.getMethods()) {
+                        System.out.println(method.name + method.desc + " (" + method.instructions.size() + " instructions)");
+                    }
                 }
-                script.saveClass(new File(scriptFile.getParentFile(), className + ".class"));
-                System.out.println("\nClass saved to " + scriptFile.getParentFile().getAbsolutePath());
-                System.out.println("\nRun it using java -cp " + scriptFile.getParentFile().getAbsolutePath() + " " + className);
+                if(args.hasFlag(CommandFlag.SAVE_TO_FILE)) {
+                    script.saveClass(new File(scriptFile.getParentFile(), className + ".class"));
+                    System.out.println("\nClass saved to " + scriptFile.getParentFile().getAbsolutePath());
+                    System.out.println("\nRun it using java -cp " + scriptFile.getParentFile().getAbsolutePath() + " " + className);
+                }
+                if(args.hasFlag(CommandFlag.RUN_AFTER_COMPILE)) {
+                    script.getScriptClass().getMethod("main").invoke(null);
+                }
             } catch (Throwable e) {
                 e.printStackTrace();
             }
@@ -49,5 +58,10 @@ public class CompileCommand implements Command{
     public CommandArgumentListBuilder getArgs() {
         return new CommandArgumentListBuilder()
                 .add(CommandArgumentType.FILE.of("script file"));
+    }
+
+    @Override
+    public List<CommandFlag> getFlags() {
+        return Arrays.asList(CommandFlag.SAVE_TO_FILE, CommandFlag.RUN_AFTER_COMPILE);
     }
 }

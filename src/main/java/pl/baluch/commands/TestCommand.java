@@ -5,6 +5,8 @@ import pl.baluch.xconscript.BuildContext;
 import pl.baluch.xconscript.data.Script;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
 
@@ -37,7 +39,7 @@ public class TestCommand implements Command {
             return;
         }
 
-        String expectedOutput = "";
+        String expectedOutput;
         try (FileInputStream fileInputStream = new FileInputStream(outFile)) {
             expectedOutput = new String(fileInputStream.readAllBytes()).replaceAll("\r\n", "\n");
         } catch (IOException e) {
@@ -98,6 +100,11 @@ public class TestCommand implements Command {
     public CommandArgumentListBuilder getArgs() {
         return new CommandArgumentListBuilder()
                 .add(CommandArgumentType.FILE.of("script/dir"));
+    }
+
+    @Override
+    public List<CommandFlag> getFlags() {
+        return new ArrayList<>();
     }
 
     private static class TestCounter {

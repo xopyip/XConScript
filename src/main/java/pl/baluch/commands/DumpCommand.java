@@ -6,7 +6,9 @@ import pl.baluch.commands.*;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.ListIterator;
 
 public class DumpCommand implements Command {
@@ -48,8 +50,7 @@ public class DumpCommand implements Command {
                         System.out.println("  Class: " + node.getClass().getSimpleName() + " opcode: " + node.getOpcode() + " args: " + ((FrameNode) node).local);
                     } else if (node instanceof InvokeDynamicInsnNode) {
                         System.out.println("  Class: " + node.getClass().getSimpleName() + " opcode: " + node.getOpcode() + " args: " + ((InvokeDynamicInsnNode) node).name + " " + ((InvokeDynamicInsnNode) node).desc + " " + ((InvokeDynamicInsnNode) node).bsm + " " + Arrays.toString(((InvokeDynamicInsnNode) node).bsmArgs));
-                    } else if (node instanceof LineNumberNode) {
-                    } else {
+                    } else if(!(node instanceof LineNumberNode)) {
                         System.out.println("  !! " + node.getClass().getSimpleName() + " " + node.getOpcode());
                     }
 
@@ -76,5 +77,10 @@ public class DumpCommand implements Command {
     public CommandArgumentListBuilder getArgs() {
         return new CommandArgumentListBuilder()
                 .add(CommandArgumentType.FILE.of("class file"));
+    }
+
+    @Override
+    public List<CommandFlag> getFlags() {
+        return new ArrayList<>();
     }
 }
