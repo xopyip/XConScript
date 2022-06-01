@@ -108,6 +108,17 @@ while v> 100 <= do
 end
 ```
 
+### Inline method
+```
+inline println
+  log "\n" log
+end
+
+method main void
+  2 println
+end
+```
+
 # Internal methods
 `log` - Logs value from top of the stack on stdout
 
